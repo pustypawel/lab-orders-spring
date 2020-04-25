@@ -1,5 +1,7 @@
 package pl.edu.wszib.labordersspring.order;
 
+import org.springframework.stereotype.Repository;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;

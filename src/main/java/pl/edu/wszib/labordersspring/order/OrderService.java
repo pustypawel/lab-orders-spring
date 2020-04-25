@@ -1,5 +1,7 @@
 package pl.edu.wszib.labordersspring.order;
 
+import org.springframework.stereotype.Service;
+
 public class OrderService {
     private final OrderRepository orderRepository;
 

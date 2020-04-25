@@ -1,5 +1,9 @@
-package pl.edu.wszib;
+package pl.edu.wszib.labordersspring.ui;
 
+import pl.edu.wszib.labordersspring.order.Item;
+import pl.edu.wszib.labordersspring.order.Order;
+import pl.edu.wszib.labordersspring.order.OrderService;
+import pl.edu.wszib.labordersspring.order.Position;
 import pl.edu.wszib.order.*;
 
 import java.math.BigDecimal;

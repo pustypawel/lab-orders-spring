@@ -1,4 +1,4 @@
-package pl.edu.wszib.order;
+package pl.edu.wszib.labordersspring.order;
 
 public interface OrderRepository {
     String save(Order order);

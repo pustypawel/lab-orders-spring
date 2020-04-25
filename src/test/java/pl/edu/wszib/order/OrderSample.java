@@ -1,5 +1,7 @@
 package pl.edu.wszib.order;
 
+import pl.edu.wszib.labordersspring.order.Order;
+
 public class OrderSample {
     public static Order sample() {
         Order order = new Order();

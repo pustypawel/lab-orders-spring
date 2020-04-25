@@ -1,5 +1,7 @@
 package pl.edu.wszib.order;
 
+import pl.edu.wszib.labordersspring.order.Position;
+
 public class PositionSamples {
     public static Position sample() {
         return new Position(1, ItemSamples.sample());

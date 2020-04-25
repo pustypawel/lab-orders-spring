@@ -1,4 +1,4 @@
-package pl.edu.wszib;
+package pl.edu.wszib.labordersspring.ui;
 
 public enum UserCommand {
     CREATE("1"),

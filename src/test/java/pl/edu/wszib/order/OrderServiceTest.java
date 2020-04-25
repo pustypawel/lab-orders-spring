@@ -1,15 +1,16 @@
 package pl.edu.wszib.order;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class OrderServiceTest {
 
     private OrderService orderService;
 
-    @Before
+    @BeforeEach
     public void setup() {
         OrderRepository orderRepository = new InMemoryOrderRepository();
         orderService = new OrderService(orderRepository);

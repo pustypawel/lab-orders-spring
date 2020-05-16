@@ -18,9 +18,9 @@ public class UISpringRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        if (orderConfig.getUi().getEnabled()) {
-            ConsoleUI consoleUI = new ConsoleUI(orderService);
-            consoleUI.start();
-        }
+//        if (orderConfig.getUi().getEnabled()) {
+//            ConsoleUI consoleUI = new ConsoleUI(orderService);
+//            consoleUI.start();
+//        }
     }
 }

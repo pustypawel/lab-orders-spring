@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
-
     private String id;
 
     private final List<Position> positions = new ArrayList<>();
@@ -17,6 +16,15 @@ public class Order {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public Order() {
+    }
+
+    public Order(List<Position> positions) {
+        this.id = null;
+        this.positions.addAll(positions);
+        this.isClosed = false;
     }
 
     public void addPosition(Position position) {

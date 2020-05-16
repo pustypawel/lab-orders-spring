@@ -31,4 +31,12 @@ public class OrderController {
                 .map(Order::toDto)
                 .collect(Collectors.toList());
     }
+    // TODO implementacja pobrania konkretnego zamówienia
+    // @RequestParam
+    // @RequestHeader
+    // @PathVariable
+    // https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-ann-arguments
+    public OrderDto getOne(String orderId) {
+        return null;
+    }
 }

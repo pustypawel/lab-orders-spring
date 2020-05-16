@@ -12,6 +12,10 @@ public class OrderCreateDto {
         this.positions = positions;
     }
 
+    public List<Position> getPositions() {
+        return positions;
+    }
+
     public static class Position {
         private final Integer quantity;
         private final Item item;
@@ -21,6 +25,14 @@ public class OrderCreateDto {
                         Item item) {
             this.quantity = quantity;
             this.item = item;
+        }
+
+        public Integer getQuantity() {
+            return quantity;
+        }
+
+        public Item getItem() {
+            return item;
         }
 
         public static class Item {
@@ -35,6 +47,18 @@ public class OrderCreateDto {
                 this.name = name;
                 this.price = price;
                 this.stock = stock;
+            }
+
+            public String getName() {
+                return name;
+            }
+
+            public BigDecimal getPrice() {
+                return price;
+            }
+
+            public Integer getStock() {
+                return stock;
             }
         }
     }

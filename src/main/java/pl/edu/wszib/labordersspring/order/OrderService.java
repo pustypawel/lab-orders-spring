@@ -1,8 +1,5 @@
 package pl.edu.wszib.labordersspring.order;
 
-import org.springframework.stereotype.Service;
-import pl.edu.wszib.labordersspring.rest.api.OrderCreateDto;
-
 public class OrderService {
     private final OrderRepository orderRepository;
 
@@ -11,8 +8,7 @@ public class OrderService {
     }
 
     public String create(Order order) {
-//        new Order()
-        return orderRepository.save(null);
+        return orderRepository.save(order);
     }
 
     public boolean exists(String orderId) {

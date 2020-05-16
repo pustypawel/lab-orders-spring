@@ -1,5 +1,7 @@
 package pl.edu.wszib.labordersspring.order;
 
+import pl.edu.wszib.labordersspring.rest.api.OrderCreateDto;
+
 import java.math.BigDecimal;
 
 public class Item {
@@ -11,6 +13,12 @@ public class Item {
         this.name = name;
         this.price = price;
         this.stock = stock;
+    }
+
+    public Item(OrderCreateDto.Position.Item item) {
+        this.name = item.getName();
+        this.price = item.getPrice();
+        this.stock = item.getStock();
     }
 
     public Integer getStock() {

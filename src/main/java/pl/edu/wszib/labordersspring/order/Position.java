@@ -1,5 +1,7 @@
 package pl.edu.wszib.labordersspring.order;
 
+import pl.edu.wszib.labordersspring.rest.api.OrderCreateDto;
+
 public class Position {
     private Integer quantity;
     private final Item item;
@@ -7,6 +9,11 @@ public class Position {
     public Position(Integer quantity, Item item) {
         this.quantity = quantity;
         this.item = item;
+    }
+
+    public Position(OrderCreateDto.Position position) {
+        this.quantity = position.getQuantity();
+        this.item = new Item(position.getItem());
     }
 
     public void increaseQuantity() {

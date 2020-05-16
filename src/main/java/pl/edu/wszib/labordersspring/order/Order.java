@@ -1,8 +1,11 @@
 package pl.edu.wszib.labordersspring.order;
 
+import pl.edu.wszib.labordersspring.rest.api.OrderCreateDto;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Order {
     private String id;
@@ -21,9 +24,11 @@ public class Order {
     public Order() {
     }
 
-    public Order(List<Position> positions) {
+    public Order(List<OrderCreateDto.Position> positions) {
         this.id = null;
-        this.positions.addAll(positions);
+        List<Position> mappedPositions = positions.stream()
+                .map(Position::new).collect(Collectors.toList());
+        this.positions.addAll(mappedPositions);
         this.isClosed = false;
     }
 

@@ -1,5 +1,7 @@
 package pl.edu.wszib.labordersspring.order;
 
+import java.util.Collection;
+
 public class OrderService {
     private final OrderRepository orderRepository;
 
@@ -23,5 +25,9 @@ public class OrderService {
 
     public Order find(String orderId) {
         return orderRepository.load(orderId);
+    }
+
+    public Collection<Order> getAll() {
+        return orderRepository.getAll();
     }
 }

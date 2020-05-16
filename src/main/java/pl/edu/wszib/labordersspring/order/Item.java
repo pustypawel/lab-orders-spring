@@ -1,6 +1,7 @@
 package pl.edu.wszib.labordersspring.order;
 
 import pl.edu.wszib.labordersspring.rest.api.OrderCreateDto;
+import pl.edu.wszib.labordersspring.rest.api.OrderDto;
 
 import java.math.BigDecimal;
 
@@ -40,5 +41,9 @@ public class Item {
                 ", price=" + price +
                 ", stock=" + stock +
                 '}';
+    }
+
+    public OrderDto.Position.Item toDto() {
+        return new OrderDto.Position.Item(name, price, stock);
     }
 }

@@ -1,6 +1,8 @@
 package pl.edu.wszib.labordersspring.order;
 
+import org.aspectj.weaver.ast.Or;
 import pl.edu.wszib.labordersspring.rest.api.OrderCreateDto;
+import pl.edu.wszib.labordersspring.rest.api.OrderDto;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -122,5 +124,12 @@ public class Order {
                 ", positions=" + positions +
                 ", isClosed=" + isClosed +
                 '}';
+    }
+
+    public OrderDto toDto() {
+        List<OrderDto.Position> mappedPositions = positions.stream()
+                .map(Position::toDto)
+                .collect(Collectors.toList());
+        return new OrderDto(id, mappedPositions, isClosed);
     }
 }

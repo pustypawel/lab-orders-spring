@@ -1,6 +1,7 @@
 package pl.edu.wszib.labordersspring.order;
 
 import pl.edu.wszib.labordersspring.rest.api.OrderCreateDto;
+import pl.edu.wszib.labordersspring.rest.api.OrderDto;
 
 public class Position {
     private Integer quantity;
@@ -50,5 +51,9 @@ public class Position {
                 "quantity=" + quantity +
                 ", item=" + item +
                 '}';
+    }
+
+    public OrderDto.Position toDto() {
+        return new OrderDto.Position(quantity, item.toDto());
     }
 }

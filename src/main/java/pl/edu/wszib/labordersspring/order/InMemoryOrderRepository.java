@@ -1,10 +1,6 @@
 package pl.edu.wszib.labordersspring.order;
 
-import org.springframework.stereotype.Repository;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 public class InMemoryOrderRepository implements OrderRepository {
 
@@ -29,5 +25,10 @@ public class InMemoryOrderRepository implements OrderRepository {
     @Override
     public Order load(String orderId) {
         return ordersMap.get(orderId);
+    }
+
+    @Override
+    public Collection<Order> getAll() {
+        return ordersMap.values();
     }
 }

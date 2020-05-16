@@ -1,16 +1,14 @@
 package pl.edu.wszib.labordersspring.rest.api;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
+import java.beans.ConstructorProperties;
 import java.math.BigDecimal;
 import java.util.List;
 
 public class OrderCreateDto {
     private final List<Position> positions;
 
-    @JsonCreator
-    public OrderCreateDto(@JsonProperty("positions") List<Position> positions) {
+    @ConstructorProperties("positions")
+    public OrderCreateDto(List<Position> positions) {
         this.positions = positions;
     }
 
@@ -18,9 +16,9 @@ public class OrderCreateDto {
         private final Integer quantity;
         private final Item item;
 
-        @JsonCreator
-        public Position(@JsonProperty("quantity") Integer quantity,
-                        @JsonProperty("item") Item item) {
+        @ConstructorProperties({"quantity", "item"})
+        public Position(Integer quantity,
+                        Item item) {
             this.quantity = quantity;
             this.item = item;
         }
@@ -30,10 +28,10 @@ public class OrderCreateDto {
             private final BigDecimal price;
             private final Integer stock;
 
-            @JsonCreator
-            public Item(@JsonProperty("name") String name,
-                        @JsonProperty("price") BigDecimal price,
-                        @JsonProperty("stock") Integer stock) {
+            @ConstructorProperties({"name", "price", "stock"})
+            public Item(String name,
+                        BigDecimal price,
+                        Integer stock) {
                 this.name = name;
                 this.price = price;
                 this.stock = stock;

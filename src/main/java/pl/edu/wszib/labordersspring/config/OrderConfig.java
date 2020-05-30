@@ -2,12 +2,18 @@ package pl.edu.wszib.labordersspring.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.ConstructorBinding;
+import org.springframework.validation.annotation.Validated;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @ConstructorBinding
 @ConfigurationProperties("orders")
+@Validated
 public class OrderConfig {
+    @NotNull
+    @Valid
     private UI ui;
 
     public OrderConfig(UI ui) {
@@ -39,6 +45,7 @@ public class OrderConfig {
     }
 
     public static class UI {
+        @NotNull
         private Boolean enabled;
 
         public UI(Boolean enabled) {

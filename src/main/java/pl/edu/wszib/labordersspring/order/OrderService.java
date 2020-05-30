@@ -34,6 +34,9 @@ public class OrderService {
     }
 
     public OrderDto getOne(String orderId) {
+        // Przykład jak wywołać OrderErrorHandler.handleUnexpectedException
+//        Order order = null;
+//        return order.toDto();
         return orderRepository.getOne(orderId)
                 .toDto();
     }

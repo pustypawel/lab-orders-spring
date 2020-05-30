@@ -16,4 +16,11 @@ public class OrderErrorHandler {
                         "Order with given id not found. id = " + e.getOrderId()));
     }
 
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<?> handleUnexpectedException(Exception e) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(new ErrorResponse("UNEXPECTED_ERROR",
+                        "Contact with email@email.com"));
+    }
+
 }

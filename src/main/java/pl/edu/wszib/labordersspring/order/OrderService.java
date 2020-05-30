@@ -1,5 +1,7 @@
 package pl.edu.wszib.labordersspring.order;
 
+import pl.edu.wszib.labordersspring.rest.api.OrderDto;
+
 import java.util.Collection;
 
 public class OrderService {
@@ -29,5 +31,13 @@ public class OrderService {
 
     public Collection<Order> getAll() {
         return orderRepository.getAll();
+    }
+
+    public OrderDto getOne(String orderId) {
+        Order order = orderRepository.getOne(orderId);
+        if (order == null) {
+            return null;
+        }
+        return order.toDto();
     }
 }

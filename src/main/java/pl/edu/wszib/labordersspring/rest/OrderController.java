@@ -1,5 +1,6 @@
 package pl.edu.wszib.labordersspring.rest;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.edu.wszib.labordersspring.order.Order;
 import pl.edu.wszib.labordersspring.order.OrderService;
@@ -31,12 +32,14 @@ public class OrderController {
                 .map(Order::toDto)
                 .collect(Collectors.toList());
     }
-    // TODO implementacja pobrania konkretnego zamówienia
-    // @RequestParam
-    // @RequestHeader
-    // @PathVariable
-    // https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-ann-arguments
-    public OrderDto getOne(String orderId) {
-        return null;
+
+    @GetMapping(path = "/{orderId}")
+    public ResponseEntity<OrderDto> getOne(@PathVariable("orderId") String orderId) {
+        OrderDto order = orderService.getOne(orderId);
+        if (order == null) {
+            return ResponseEntity.notFound()
+                    .build();
+        }
+        return ResponseEntity.ok(order);
     }
 }

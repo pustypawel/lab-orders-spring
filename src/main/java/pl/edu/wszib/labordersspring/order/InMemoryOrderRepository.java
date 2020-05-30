@@ -31,4 +31,9 @@ public class InMemoryOrderRepository implements OrderRepository {
     public Collection<Order> getAll() {
         return ordersMap.values();
     }
+
+    @Override
+    public Order getOne(String orderId) {
+        return ordersMap.get(orderId);
+    }
 }

@@ -1,11 +1,17 @@
 package pl.edu.wszib.labordersspring.rest.api;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import java.beans.ConstructorProperties;
 import java.math.BigDecimal;
 import java.util.List;
 
 public class OrderCreateDto {
-    private final List<Position> positions;
+    @NotEmpty
+    private final List<@Valid Position> positions;
 
     @ConstructorProperties("positions")
     public OrderCreateDto(List<Position> positions) {
@@ -17,7 +23,11 @@ public class OrderCreateDto {
     }
 
     public static class Position {
+        @NotNull
+        @Positive
         private final Integer quantity;
+        @NotNull
+        @Valid
         private final Item item;
 
         @ConstructorProperties({"quantity", "item"})
@@ -36,7 +46,10 @@ public class OrderCreateDto {
         }
 
         public static class Item {
+            @NotBlank
             private final String name;
+            @NotNull
+            @Positive
             private final BigDecimal price;
             private final Integer stock;
 

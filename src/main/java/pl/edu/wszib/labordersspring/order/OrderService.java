@@ -34,10 +34,7 @@ public class OrderService {
     }
 
     public OrderDto getOne(String orderId) {
-        Order order = orderRepository.getOne(orderId);
-        if (order == null) {
-            return null;
-        }
-        return order.toDto();
+        return orderRepository.getOne(orderId)
+                .toDto();
     }
 }

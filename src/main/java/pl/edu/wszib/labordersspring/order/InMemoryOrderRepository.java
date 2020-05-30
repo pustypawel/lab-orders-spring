@@ -1,5 +1,7 @@
 package pl.edu.wszib.labordersspring.order;
 
+import pl.edu.wszib.labordersspring.order.exception.OrderNotFoundException;
+
 import java.util.*;
 
 public class InMemoryOrderRepository implements OrderRepository {
@@ -34,6 +36,10 @@ public class InMemoryOrderRepository implements OrderRepository {
 
     @Override
     public Order getOne(String orderId) {
-        return ordersMap.get(orderId);
+        Order order = ordersMap.get(orderId);
+        if (order == null) {
+            throw new OrderNotFoundException(orderId);
+        }
+        return order;
     }
 }

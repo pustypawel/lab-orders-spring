@@ -5,6 +5,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import pl.edu.wszib.labordersspring.order.Order;
 import pl.edu.wszib.labordersspring.order.OrderService;
+import pl.edu.wszib.labordersspring.order.exception.OrderNotFoundException;
 import pl.edu.wszib.labordersspring.rest.api.OrderCreateDto;
 import pl.edu.wszib.labordersspring.rest.api.OrderDto;
 
@@ -36,12 +37,7 @@ public class OrderController {
     }
 
     @GetMapping(path = "/{orderId}")
-    public ResponseEntity<OrderDto> getOne(@PathVariable("orderId") String orderId) {
-        OrderDto order = orderService.getOne(orderId);
-        if (order == null) {
-            return ResponseEntity.notFound()
-                    .build();
-        }
-        return ResponseEntity.ok(order);
+    public OrderDto getOne(@PathVariable("orderId") String orderId) {
+        return orderService.getOne(orderId);
     }
 }

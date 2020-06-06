@@ -1,6 +1,5 @@
 package pl.edu.wszib.labordersspring.order;
 
-import org.aspectj.weaver.ast.Or;
 import pl.edu.wszib.labordersspring.rest.api.OrderCreateDto;
 import pl.edu.wszib.labordersspring.rest.api.OrderDto;
 

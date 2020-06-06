@@ -2,6 +2,7 @@ package pl.edu.wszib.labordersspring.order;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import pl.edu.wszib.labordersspring.order.jpa.SpringDataJpaOrderRepository;
 
 @Configuration
 public class SpringOrderConfiguration {
@@ -12,6 +13,6 @@ public class SpringOrderConfiguration {
 
     @Bean
     public OrderRepository orderRepository() {
-        return new InMemoryOrderRepository();
+        return new SpringDataJpaOrderRepository();
     }
 }

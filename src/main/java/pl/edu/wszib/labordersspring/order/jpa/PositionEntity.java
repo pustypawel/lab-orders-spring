@@ -10,7 +10,7 @@ public class PositionEntity {
     private OrderEntity order;
 
     @Id
-    private Long id;
+    private String id;
 
     @Column(nullable = false)
     private Integer quantity;
@@ -28,7 +28,7 @@ public class PositionEntity {
         // for JPA
     }
 
-    public PositionEntity(Long id,
+    public PositionEntity(String id,
                           Integer quantity,
                           String itemName,
                           BigDecimal itemPrice,
@@ -38,5 +38,9 @@ public class PositionEntity {
         this.itemName = itemName;
         this.itemPrice = itemPrice;
         this.itemStock = itemStock;
+    }
+
+    public void setOrder(OrderEntity order) {
+        this.order = order;
     }
 }

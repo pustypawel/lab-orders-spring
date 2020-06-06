@@ -1,5 +1,6 @@
 package pl.edu.wszib.labordersspring.order;
 
+import pl.edu.wszib.labordersspring.order.jpa.PositionEntity;
 import pl.edu.wszib.labordersspring.rest.api.OrderCreateDto;
 import pl.edu.wszib.labordersspring.rest.api.OrderDto;
 
@@ -55,5 +56,9 @@ public class Position {
 
     public OrderDto.Position toDto() {
         return new OrderDto.Position(quantity, item.toDto());
+    }
+
+    public PositionEntity toEntity(String positionId) {
+        return new PositionEntity(positionId, quantity, item.getName(), item.getPrice(), item.getStock());
     }
 }

@@ -1,11 +1,15 @@
 package pl.edu.wszib.labordersspring.order;
 
+import pl.edu.wszib.labordersspring.order.jpa.OrderEntity;
+import pl.edu.wszib.labordersspring.order.jpa.PositionEntity;
 import pl.edu.wszib.labordersspring.rest.api.OrderCreateDto;
 import pl.edu.wszib.labordersspring.rest.api.OrderDto;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 
 public class Order {
@@ -130,5 +134,13 @@ public class Order {
                 .map(Position::toDto)
                 .collect(Collectors.toList());
         return new OrderDto(id, mappedPositions, isClosed);
+    }
+
+    public OrderEntity toEntity() {
+        AtomicLong counter = new AtomicLong();
+        List<PositionEntity> mappedPositions = positions.stream()
+                .map(position -> position.toEntity(id + "_" + counter.incrementAndGet()))
+                .collect(Collectors.toList());
+        return new OrderEntity(id, mappedPositions, isClosed);
     }
 }

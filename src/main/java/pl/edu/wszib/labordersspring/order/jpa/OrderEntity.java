@@ -20,8 +20,11 @@ public class OrderEntity {
     }
 
     public OrderEntity(String id,
+                       List<PositionEntity> positions,
                        Boolean isClosed) {
         this.id = id;
+        this.positions = positions;
+        this.positions.forEach(positionEntity -> positionEntity.setOrder(this));
         this.isClosed = isClosed;
     }
 }

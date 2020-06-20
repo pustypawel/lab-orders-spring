@@ -43,4 +43,24 @@ public class PositionEntity {
     public void setOrder(OrderEntity order) {
         this.order = order;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public String getItemName() {
+        return itemName;
+    }
+
+    public BigDecimal getItemPrice() {
+        return itemPrice;
+    }
+
+    public Integer getItemStock() {
+        return itemStock;
+    }
 }

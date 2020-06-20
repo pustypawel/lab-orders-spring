@@ -8,7 +8,6 @@ import pl.edu.wszib.labordersspring.rest.api.OrderDto;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 
@@ -35,6 +34,14 @@ public class Order {
                 .map(Position::new).collect(Collectors.toList());
         this.positions.addAll(mappedPositions);
         this.isClosed = false;
+    }
+
+    private Order(String id,
+                 List<Position> positions,
+                 boolean isClosed) {
+        this.id = id;
+        this.positions.addAll(positions);
+        this.isClosed = isClosed;
     }
 
     public void addPosition(Position position) {
@@ -142,5 +149,12 @@ public class Order {
                 .map(position -> position.toEntity(id + "_" + counter.incrementAndGet()))
                 .collect(Collectors.toList());
         return new OrderEntity(id, mappedPositions, isClosed);
+    }
+
+    public static Order fromEntity(OrderEntity orderEntity) {
+        List<Position> positions = orderEntity.getPositions().stream()
+                .map(Position::fromEntity)
+                .collect(Collectors.toList());
+        return new Order(orderEntity.getId(), positions, orderEntity.getClosed());
     }
 }

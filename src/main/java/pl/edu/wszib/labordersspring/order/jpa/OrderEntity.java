@@ -27,4 +27,16 @@ public class OrderEntity {
         this.positions.forEach(positionEntity -> positionEntity.setOrder(this));
         this.isClosed = isClosed;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public List<PositionEntity> getPositions() {
+        return positions;
+    }
+
+    public Boolean getClosed() {
+        return isClosed;
+    }
 }

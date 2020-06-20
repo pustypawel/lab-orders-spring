@@ -10,5 +10,11 @@ public interface OrderRepository {
     boolean exists(String orderId);
     Order load(String orderId);
     Collection<Order> getAll();
-    Order getOne(String orderId) throws OrderNotFoundException;
+    default Order getOne(String orderId) throws OrderNotFoundException {
+        Order order = load(orderId);
+        if (order == null) {
+            throw new OrderNotFoundException(orderId);
+        }
+        return order;
+    }
 }

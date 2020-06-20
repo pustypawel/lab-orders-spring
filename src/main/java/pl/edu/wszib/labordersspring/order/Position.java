@@ -61,4 +61,9 @@ public class Position {
     public PositionEntity toEntity(String positionId) {
         return new PositionEntity(positionId, quantity, item.getName(), item.getPrice(), item.getStock());
     }
+
+    public static Position fromEntity(PositionEntity positionEntity) {
+        Item item = Item.fromEntity(positionEntity);
+        return new Position(positionEntity.getQuantity(), item);
+    }
 }

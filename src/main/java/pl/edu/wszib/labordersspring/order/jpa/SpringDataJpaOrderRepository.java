@@ -2,10 +2,10 @@ package pl.edu.wszib.labordersspring.order.jpa;
 
 import pl.edu.wszib.labordersspring.order.Order;
 import pl.edu.wszib.labordersspring.order.OrderRepository;
-import pl.edu.wszib.labordersspring.order.exception.OrderNotFoundException;
 
 import java.util.Collection;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class SpringDataJpaOrderRepository implements OrderRepository {
     private final SpringDataJpaOrderDao springDataJpaOrderDao;
@@ -28,21 +28,21 @@ public class SpringDataJpaOrderRepository implements OrderRepository {
 
     @Override
     public boolean exists(String orderId) {
-        return false;
+        return springDataJpaOrderDao.existsById(orderId);
     }
 
     @Override
     public Order load(String orderId) {
-        return null;
+        return springDataJpaOrderDao.findById(orderId)
+                .map(Order::fromEntity)
+                .orElse(null);  // TODO propagate optional
     }
 
     @Override
     public Collection<Order> getAll() {
-        return null;
+        return springDataJpaOrderDao.findAll().stream()
+                .map(Order::fromEntity)
+                .collect(Collectors.toList());
     }
 
-    @Override
-    public Order getOne(String orderId) throws OrderNotFoundException {
-        return null;
-    }
 }
